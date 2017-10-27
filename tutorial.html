@@ -1,0 +1,84 @@
+<div id="modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+            <div class="modal-header">
+                <h3>Photo-masking tutorial for 3D modelling </h3>
+            </div>
+            <div id="0" class="modal-body" style="display:none">
+                <p>
+                Questa applicazione e' molto semplice (ma non funziona ancora su smartphone e tablet). La piattaforma carichera' la fotografia di un manufatto archeologico. Una volta che l'immagine e' stata caricata, ti verra' chiesto di cliccare creando un poligono che definisca il contorno dell'oggetto. Clicca ogni volta desideri aggiungere un punto lungo il contorno del poligono e l'ultimo punto chiudera' il poligono ricongiungendosi al punto di partenza. Piu' in generale, vorremmo che disegnassi il poligono rimanendo leggermente all'interno del contorno dell'oggetto. Questo consente di escludere del tutto i pixel relativi allo sfondo anziche' all'oggetto. I pixel relativi all'oggetto persi in questo modo verranno recuperati disegnando il contorno di altre foto.
+                </p>
+
+                <p>
+                This application is very simple (but it does not yet work on mobile devices). When you participate, the platform will load a photograph of an archaeological artefact. Once the image has been loaded, you will be asked to click or tap around the edge of the artefact in order to define a polygon outline. Click once every time you wish to add a point along the edge of the polygon and your final point will snap back onto the one you started with. You can draw one polygon around the entire object or instead draw a series of overlapping polygons if you prefer. In general, we would like you to draw your polygon(s) very slightly inside the actual edge of the artefact. This is because we don't want background pixels near this edge to create a fuzzy border, and we don't need to worry so much about losing a bit of the artefact edge, as the missing few pixels are very likely to appear in one of the other photographs (at least 40 overlapping photographs are likely to exist for each object to support the construction of the 3D model). An example of a successful outline is shown below:
+                </p>
+                <img src="http://micropasts.org/wp-content/uploads/2015/03/PEF_Tutorial.png" width="100%" class="img-polaroid" alt="An example of an artefact photograph whose outline has been defined" />
+            </div>
+            <div id="1" class="modal-body" style="display:none">
+                <p> 
+                Come usare la barra degli strumenti relativa all'applicazione di photo-masking:
+                </p>
+                <img src="http://micropasts.org/wp-content/uploads/2014/11/Photomasking_Toolbar.png" width="100%" alt="Photo-masking Toolbar" />
+                <p>
+                <p><strong>Outline</strong>: Questa opzione e' selezionata di default e indica che le azioni che seguiranno sono relative alla realizzazione di un poligono lungo il contorno dell'oggetto.</p>
+                <p><strong>Holes</strong>: Questa opzione solitamente non e' disponibile, ma apparira' ogni qual volta l'oggetto di cui si vuole marcare il contorno abbia dei 'buchi', come nel caso di un braccialetto. In questi casi lo sfondo deve essere escluso anche all'interno del 'buco' stesso. Clicca su 'Holes' prima di cominciare a disegnare o modificare un buco allinterno dell'oggetto.</p>
+                <p><strong>Draw</strong>: Questa opzione e' selezionata di default, all'inizio di ogni task. Clicca su 'Draw' ogni volta che vuoi cominciare a tracciare il contorno di un oggetto. Una volta completato il poligono di contorno, la linea blu che lo delinea diventera' gialla.</p>
+                <p><strong>Edit</strong>: Questa opzione diventa disponibile quando almeno un poligono e' stato completato. Dopo aver cliccato su 'Edit', scegli il poligono che desideri modificare cliccando una volta a qualsiasi punto del poligono. La linea del poligono tornera' blu e potra' essere modificata. </p>
+                <p><strong>Remove all polygons</strong>: Utilizza questa opzione se desideri ricominciare da capo. Cliccando su questa opzione rimuoverai tutti i poligoni precedentemente tracciati.</p>
+                <p> <strong>Save the drawings</strong>: Clicca su questa opzione quando una volta completato il photo-masking dell'oggetto - salvera' il tuo lavoro come completato.</p>
+                </p>
+                
+            </div>    
+
+            <div id="2" class="modal-body" style="display:none">  
+                <p>
+                Cliccando sull'opzione "Tutorial", avrai la possibilita' di rileggere queste istruzioni durante il completamento del lavoro di photo-masking. 
+
+                During the task, you can always return to this tutorial via the "Tutorial" button.
+                </p>
+                <p>
+
+                Un esempio di <a href="http://micropasts.org/3D">modello 3D</a> completato.    
+                </p>
+                <p>
+                Per saperne di piu' sul progetto, per porre domande, suggerire modifiche o fornire nuove idee e spunti, ti invitiamo a registrarti sul nostro <a href="http://community.micropasts.org" title="Community forum">community forum</a>.
+                </p>
+            </div>
+
+            <div class="modal-footer">
+                <a id="prevBtn" href="#" onclick="showStep('prev')" class="btn btn-default">Previous</a>
+                <a id="nextBtn" href="#" onclick="showStep('next')" class="btn btn-success">Next</a>
+                <a id="startContrib" href="../ethiopia/newtask" class="btn btn-primary" style="display:none"><i class="glyphicon glyphicon-thumbs-up"></i> Start!</a>
+            </div>
+      </div>
+</div>
+</div>
+
+
+<script>
+    var step = -1;
+    function showStep(action) {
+        $("#" + step).hide();
+        if (action == 'next') {
+            step = step + 1;
+        }
+        if (action == 'prev') {
+            step = step - 1;
+        }
+        if (step == 0) {
+            $("#prevBtn").hide();
+        }
+        else {
+            $("#prevBtn").show();
+        }
+
+        if (step == 2) {
+            $("#nextBtn").hide();
+            $("#startContrib").show();
+        }
+        $("#" + step).show();
+    }
+
+    showStep('next');
+    $("#modal").modal('show');
+</script>
